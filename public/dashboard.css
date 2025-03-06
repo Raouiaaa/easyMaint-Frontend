@@ -1,0 +1,48 @@
+.dashboard {
+    background-color: #525658; /* Background color */
+    color: white; /* Text color */
+    height: 100vh; /* Full viewport height */
+    position: fixed; /* Fix the sidebar to the left */
+    top: 0;
+    left: 0;
+    overflow-y: auto; /* Add scroll if content overflows */
+}
+  
+/* Ensure all text inside the dashboard is white */
+.dashboard,
+.dashboard a,
+.dashboard span,
+.dashboard button,
+.dashboard li
+.dashboard ul {
+    color: white !important; /* Force white text */
+}
+  
+  /* Style links and buttons */
+.dashboard a {
+    color: white !important;
+    text-decoration: none;
+}
+  
+.dashboard a:hover {
+    color: #ddd !important; /* Slightly lighter on hover */
+}
+  
+.dashboard button {
+    color: white !important;
+    background-color: transparent;
+    border: none;
+}
+  
+.dashboard button:hover {
+    color: ddd !important; /* Slightly lighter on hover */
+}
+  
+.logo {
+    border-radius: 6px;
+}
+  
+.triangle-down {
+    color: white !important;
+}
+  

@@ -1,0 +1,16 @@
+.app-container {
+    display: grid;
+    grid-template-columns: 280px auto; /* Sidebar 250px, remaining space for content */
+    height: 100vh;
+}
+  
+.dashboard {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    padding: 20px;
+}
+  
+.header-and-card {
+    grid-column-start: 2;
+    grid-column-end: auto;
+}
