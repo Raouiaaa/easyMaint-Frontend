@@ -3,9 +3,9 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction"; // Enables clicking
 import { Modal, Button } from "react-bootstrap"; // Import Bootstrap Modal
-import "../../../public/calendar.css";
+import "./calendar.css";
 
-const CalendarPage = () => {
+const Calendar = () => {
   // Sample events (You’ll replace this with data from your backend)
   const [events] = useState([
     {
@@ -112,4 +112,4 @@ const CalendarPage = () => {
   );
 };
 
-export default CalendarPage;
+export default Calendar;
