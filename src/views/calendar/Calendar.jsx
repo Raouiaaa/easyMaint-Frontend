@@ -1,24 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction"; // Enables clicking
 import { Modal, Button } from "react-bootstrap"; // Import Bootstrap Modal
+import {getAllScheduledActions} from "../../api/scheduledActionsApi.js";
 import "./calendar.css";
 
-const Calendar = () => {
-  // Sample events (You’ll replace this with data from your backend)
-  const [events] = useState([
-    {
-      title: "Maintenance",
-      date: "2025-03-05",
-      actions: ["Check motor", "Replace filter"],
+function Calendar () {
+  const [scheduledActions, setScheduledActions] = useState([]);
+
+  useEffect(() => {
+    const fetchScheduledActions = async () => {
+      try {
+        // Fetch both API calls in parallel
+        const data = await getAllScheduledActions();
+        setScheduledActions(data.scheduledActions);
+        console.log("Fetched scheduled actions:", data.scheduledActions);
+        // if (data) setScheduledActions(data);
+        } catch (err) {
+          console.error("Error fetching work orders:", err);
+          // setError("Failed to fetch work orders."); // Set error message
+        }
+    };
+  
+    fetchScheduledActions();
+  }, []); // Runs once on mount
+
+  const formattedEvents = scheduledActions.map((action) => ({
+    title: action.reference, // Display the reference as event title
+    date: action.date, // Ensure the date format is correct
+    extendedProps: {
+      descriptionsOfActions: action.descriptionsOfActions || [],
     },
-    {
-      title: "Inspection",
-      date: "2025-03-10",
-      actions: ["Inspect pipes", "Test pump pressure"],
-    },
-  ]);
+  }));
 
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -27,7 +41,7 @@ const Calendar = () => {
 
   // Open modal when clicking an event
   const handleEventClick = (info) => {
-    setSelectedEvent(info.event);
+    setSelectedEvent(info.event.extendedProps.descriptionsOfActions?.length > 0 ? info.event : null);
     setShowModal(true);
   };
 
@@ -37,7 +51,7 @@ const Calendar = () => {
     setSelectedDate(date);
 
     // Filter events for the clicked date
-    const eventsForDate = events.filter((event) => event.date === date);
+    const eventsForDate = scheduledActions.filter((event) => event.date === date);
     setFilteredEvents(eventsForDate);
   };
 
@@ -47,32 +61,28 @@ const Calendar = () => {
         <FullCalendar
           plugins={[dayGridPlugin, interactionPlugin]}
           initialView="dayGridMonth"
-          events={events}
+          events={formattedEvents}
           eventClick={handleEventClick} // Show modal when clicking an event
           dateClick={handleDateClick} // Detect when a date is clicked
-          eventClassNames={(eventInfo) => {
-            return eventInfo.event.title === "Maintenance"
-              ? "maintenance-event"
-              : "inspection-event";
-          }}
+          eventClassNames="maintenance-event"
           headerToolbar={{
             left: "prev",
             center: "title",
             right: "next",
           }}
-          height="auto" // Adjust height to fit content
+          height="auto" // Adjust height to fit content (it was 500px)
           dayCellClassNames="custom-day-cell" // Custom styles
         />
 
         {/* Modal to show scheduled actions */}
         <Modal show={showModal} onHide={() => setShowModal(false)}>
           <Modal.Header>
-            <Modal.Title>Scheduled Actions</Modal.Title>
+            <Modal.Title>{selectedEvent ? selectedEvent.title : "No Event Selected"}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {selectedEvent ? (
               <ul>
-                {selectedEvent.extendedProps.actions.map((action, index) => (
+                {selectedEvent.extendedProps.descriptionsOfActions.map((action, index) => (
                   <li key={index}>{action}</li>
                 ))}
               </ul>
@@ -95,9 +105,9 @@ const Calendar = () => {
           <ul>
             {filteredEvents.map((event, index) => (
               <li key={index}>
-                <strong>{event.title}</strong>
+                <strong>{event.reference}</strong>
                 <ul>
-                  {event.actions.map((action, i) => (
+                  {event.descriptionsOfActions.map((action, i) => (
                     <li key={i}>{action}</li>
                   ))}
                 </ul>
@@ -105,7 +115,7 @@ const Calendar = () => {
             ))}
           </ul>
         ) : (
-          <p>No events scheduled.</p>
+          <p>No actions scheduled.</p>
         )}
       </div>
     </div>

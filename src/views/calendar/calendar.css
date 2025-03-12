@@ -13,7 +13,7 @@
     font-weight: bold;
     color: black;
     text-decoration: none !important; /* Remove underline */
-    height: 5px !important;
+    height: 7px !important;   /* increase to show date number on eventdates too*/
 }
   
 .fc-prev-button,
@@ -36,28 +36,27 @@
   
   /* Custom background color for Maintenance events */
 .maintenance-event {
-    background-color: #ff5733; /* Red-orange */
+    background-color: orange; /* Red-orange #ff5733*/
     border: none !important;
 }
   
   /* Custom background color for Inspection events */
-.inspection-event {
+/* .inspection-event {
     background-color: rgb(255, 166, 0); /* Blue */
-    border: none !important;
-}
+    /* border: none !important;
+} */ 
   
   /* after adding a side-bar */
   
   /* Layout */
 .calendar-container {
     display: flex;
-    gap: 30px; /* Space between items */
-    width: 640px; /* Adjust width as needed */
-    max-width: 1000px; 
+    gap: 20px; /* Space between items */
+    width: 100%;
 }
   
 .calendar {
-    width: 280px;
+    width: 600px; 
 }
   
 .event-sidebar {
@@ -66,7 +65,7 @@
     border-radius: 8px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     width: 350px;
-    height: 200px;
+    height: fit-content;
 }
   
 .event-sidebar h3 {

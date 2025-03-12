@@ -55,12 +55,7 @@ function SideBar() {
                                 </a> */}
                             </li>
                             <li>
-                                <a
-                                    href="/dashboard/calendar"
-                                    className="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                                >
-                                    Calendar
-                                </a>
+                                <Link to="/dashboard/calendar" className="link-body-emphasis d-inline-flex text-decoration-none rounded" >Calendar</Link>
                             </li>
                         </ul>
                     </div>
