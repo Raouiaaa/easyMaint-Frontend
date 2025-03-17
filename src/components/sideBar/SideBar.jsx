@@ -47,18 +47,18 @@ function SideBar() {
                         <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                             <li>
                                 <Link to="/dashboard/global-view" className="link-body-emphasis d-inline-flex text-decoration-none rounded" >Global view</Link>
-                                {/* <a
-                                    href="/dashboard/global-view"
-                                    className="link-body-emphasis d-inline-flex text-decoration-none rounded"
-                                >
-                                    Global view
-                                </a> */}
                             </li>
                             <li>
                                 <Link to="/dashboard/calendar" className="link-body-emphasis d-inline-flex text-decoration-none rounded" >Calendar</Link>
                             </li>
                         </ul>
                     </div>
+
+                    <ul class="nav nav-pills flex-column mb-auto">  
+                        <li>
+                        <Link to="/assets" className="link-body-emphasis d-inline-flex text-decoration-none rounded">Assets</Link>
+                        </li>                        
+                    </ul>
                 </li>
             </ul>
         </div>

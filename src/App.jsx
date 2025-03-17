@@ -3,6 +3,7 @@ import SideBar from "./components/sideBar/SideBar";
 import Header from "./components/header/Header";
 import GlobalView from "./views/globalView/GlobalView";
 import Calendar from "./views/calendar/Calendar";
+import Asset from "./views/asset/Asset.jsx";
 import "./App.css";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/dashboard/global-view" element={<GlobalView />} />
             <Route path="/dashboard/calendar" element={<Calendar />} />
+            <Route path="/assets" element={<Asset />} />
           </Routes>
         </div>
       </div>
