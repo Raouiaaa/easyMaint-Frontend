@@ -13,7 +13,7 @@ function SideBar() {
                 <img
                     className="bi pe-none me-2 logo"
                     style={{ width: "50px", height: "44px" }}
-                    src={logo}
+                    src={'logoEM.jpg'}
                 />
                 <span className="fs-5 fw-semibold">EasyMaint</span>
             </a>
