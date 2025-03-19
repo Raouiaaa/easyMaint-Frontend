@@ -54,10 +54,10 @@ function SideBar() {
                         </ul>
                     </div>
 
-                    <ul class="nav nav-pills flex-column mb-auto">  
+                    <ul class="nav nav-pills flex-column mb-auto">
                         <li>
-                        <Link to="/assets" className="link-body-emphasis d-inline-flex text-decoration-none rounded">Assets</Link>
-                        </li>                        
+                            <Link to="/assets" className="link-body-emphasis d-inline-flex text-decoration-none rounded">Assets</Link>
+                        </li>
                     </ul>
                 </li>
             </ul>

@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import SideBar from "./components/sideBar/SideBar";
+// import SideBar from "./components/sideBar/SideBar";
+import _SideBar from "./components/_sideBar/SideBar";
 import Header from "./components/header/Header";
 import GlobalView from "./views/globalView/GlobalView";
 import Calendar from "./views/calendar/Calendar";
@@ -11,8 +12,8 @@ function App() {
   return (
     <BrowserRouter>
       <div className="app-container">
-        <SideBar />
-        <div className="header-and-card">
+        <_SideBar />
+        <div className="body header-and-card">
           <Header />
           <Routes>
             <Route path="/dashboard/global-view" element={<GlobalView />} />
