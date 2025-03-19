@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../../components/card/Card';
-import { getAllWorkOrders, getOverdueWorkOrders} from '../../api/workOrdersApi';
+import { getAllWorkOrders, getOverdueWorkOrders } from '../../api/workOrdersApi';
 import "./globalView.css";
 
 function GlobalView() {
@@ -32,11 +32,11 @@ function GlobalView() {
     console.log("overdueWorkOrders:", overdueWorkOrders);
 
     // getting open work orders
-    const openWorkOrders = workOrders.filter((order) => {
+    const openWorkOrders = workOrders?.filter((order) => {
         return order.status === "open";
     });
 
-    const doneWorkOrders = workOrders.filter((order) => {
+    const doneWorkOrders = workOrders?.filter((order) => {
         return order.status === "done";
     });
 
@@ -46,19 +46,19 @@ function GlobalView() {
             <Card
                 className="item-a"
                 title="Overdue work orders"
-                total={overdueWorkOrders.length}
+                total={overdueWorkOrders?.length}
                 style={{ width: "25rem", height: "20.58rem" }}
             />
             <Card
                 className="item-b"
                 title="Open work orders"
-                total={openWorkOrders.length}
+                total={openWorkOrders?.length}
                 style={{ width: "15rem", height: "10rem" }}
             />
             <Card
                 className="item-c"
                 title="Completed work orders"
-                total={doneWorkOrders.length}
+                total={doneWorkOrders?.length}
                 style={{ width: "15rem", height: "10rem" }}
             />
             <Card

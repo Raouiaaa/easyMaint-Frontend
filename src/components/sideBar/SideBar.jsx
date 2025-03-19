@@ -9,6 +9,18 @@ import {
 import SubMenu from "./SubMenu";
 import './sideBar.css'
 
+
+const subMenuItems = [
+    {
+        title: "Global view",
+        route: "/dashboard/global-view",
+    },
+    {
+        title: "Calendar",
+        route: "/dashboard/calendar",
+    },
+];
+
 function SideBar() {
     return (
         <div className="sidebar is-open">
@@ -16,7 +28,7 @@ function SideBar() {
                 <img
                     className="bi pe-none me-2 logo"
                     style={{ width: "50px", height: "44px" }}
-                    src={'logoEM.jpg'}
+                    src={'/logoEM.jpg'}
                 />
                 <span className="fs-5 fw-semibold">EasyMaint</span>
             </div>
@@ -25,17 +37,17 @@ function SideBar() {
                 <SubMenu
                     title="Dashboard"
                     icon={faGauge}
-                    items={["Global view", "Calendar"]}
+                    items={subMenuItems}
                 />
 
                 <Nav.Item className="active">
-                    <Nav.Link href="/">
+                    <Nav.Link href="/assets">
                         <FontAwesomeIcon icon={faScrewdriverWrench} className="me-2" />
                         Assets
                     </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link href="/">
+                    <Nav.Link href="/work-orders">
                         <FontAwesomeIcon icon={faListCheck} className="me-2" />
                         Work Orders
                     </Nav.Link>

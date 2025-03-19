@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Accordion, Nav } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -14,15 +15,15 @@ function SubMenu({ icon, title, items }) {
                     <Accordion.Body>
                         <nav className="nav flex-column">
                             {items.map(item => (
-                                <div key={item} className="nav-item">
-                                    <a
+                                <div key={item.title} className="nav-item">
+                                    <Link
                                         className={`nav-link nav-item ps-4 ${item === "Active" ? "active" : ""
                                             } `}
-                                        href="/"
-                                        key={item}
+                                        to={item.route}
+                                        key={"link_" + item.title}
                                     >
-                                        {item}
-                                    </a>
+                                        {item.title}
+                                    </Link>
                                 </div>
                             ))}
                         </nav>

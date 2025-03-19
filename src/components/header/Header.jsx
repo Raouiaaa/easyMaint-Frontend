@@ -21,9 +21,9 @@ function Header() {
 
             <Nav className="ms-auto" navbar>
                 <Nav.Link href="#">
-                    <button type="button" class="btn btn-primary position-relative">
+                    <button type="button" className="btn btn-primary position-relative">
                         <FontAwesomeIcon icon={faBell} />
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                        <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                             99+
                         </span>
                     </button>
