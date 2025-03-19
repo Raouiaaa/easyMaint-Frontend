@@ -1,15 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Accordion, Nav } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
 
 function SubMenu({ icon, title, items }) {
-    const [isCollapsed, setIsCollapsed] = useState(true);
-
-    const toggleNavbar = () => {
-        setIsCollapsed(!isCollapsed);
-    }
-
     return (
         <Nav.Item>
             <Accordion>
