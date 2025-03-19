@@ -132,3 +132,6 @@ accordion-header:focus {
   color: #fff;
   transition: .2s;
 }
+.accordion-body{
+  background-color: #354052 !important;
+}

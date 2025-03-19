@@ -1,6 +1,9 @@
 .body{
   background-color: #f5f9fc;
 }
+.wrapper{
+  padding: 0 1.5rem;
+}
 
 .app-container {
   display: grid;

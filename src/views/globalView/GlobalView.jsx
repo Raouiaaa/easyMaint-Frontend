@@ -28,9 +28,6 @@ function GlobalView() {
         fetchData();
     }, []); // Runs once on mount
 
-    console.log("workOrders:", workOrders);
-    console.log("overdueWorkOrders:", overdueWorkOrders);
-
     // getting open work orders
     const openWorkOrders = workOrders?.filter((order) => {
         return order.status === "open";

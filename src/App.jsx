@@ -4,6 +4,7 @@ import Header from "./components/header/Header";
 import GlobalView from "./views/globalView/GlobalView";
 import Calendar from "./views/calendar/Calendar";
 import Asset from "./views/asset/Asset.jsx";
+import CreateAsset from "./views/asset/CreateAsset.jsx";
 import "./App.css";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="/dashboard/global-view" element={<GlobalView />} />
             <Route path="/dashboard/calendar" element={<Calendar />} />
             <Route path="/assets" element={<Asset />} />
+            <Route path="/assets/create" element={<CreateAsset />} />
           </Routes>
         </div>
       </div>

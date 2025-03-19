@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Accordion, Nav } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function SubMenu({ icon, title, items }) {
+    const location = useLocation();
     return (
         <Nav.Item>
             <Accordion>
@@ -17,8 +18,7 @@ function SubMenu({ icon, title, items }) {
                             {items.map(item => (
                                 <div key={item.title} className="nav-item">
                                     <Link
-                                        className={`nav-link nav-item ps-4 ${item === "Active" ? "active" : ""
-                                            } `}
+                                        className={`nav-link nav-item ps-4 ${item.route === location.pathname ? 'active' : ''} `}
                                         to={item.route}
                                         key={"link_" + item.title}
                                     >

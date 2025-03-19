@@ -3,10 +3,10 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction"; // Enables clicking
 import { Modal, Button } from "react-bootstrap"; // Import Bootstrap Modal
-import {getAllScheduledActions} from "../../api/scheduledActionsApi.js";
+import { getAllScheduledActions } from "../../api/scheduledActionsApi.js";
 import "./calendar.css";
 
-function Calendar () {
+function Calendar() {
   const [scheduledActions, setScheduledActions] = useState([]);
 
   useEffect(() => {
@@ -15,14 +15,13 @@ function Calendar () {
         // Fetch both API calls in parallel
         const data = await getAllScheduledActions();
         setScheduledActions(data.scheduledActions);
-        console.log("Fetched scheduled actions:", data.scheduledActions);
         // if (data) setScheduledActions(data);
-        } catch (err) {
-          console.error("Error fetching work orders:", err);
-          // setError("Failed to fetch work orders."); // Set error message
-        }
+      } catch (err) {
+        console.error("Error fetching work orders:", err);
+        // setError("Failed to fetch work orders."); // Set error message
+      }
     };
-  
+
     fetchScheduledActions();
   }, []); // Runs once on mount
 

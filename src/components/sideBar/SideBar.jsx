@@ -1,5 +1,6 @@
 import React from 'react'
 import { Nav } from "react-bootstrap";
+import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faGauge,
@@ -22,6 +23,7 @@ const subMenuItems = [
 ];
 
 function SideBar() {
+    const location = useLocation();
     return (
         <div className="sidebar is-open">
             <div className="sidebar-header">
@@ -40,17 +42,17 @@ function SideBar() {
                     items={subMenuItems}
                 />
 
-                <Nav.Item className="active">
-                    <Nav.Link href="/assets">
+                <Nav.Item className={location.pathname === "/assets" ? "active" : ""}>
+                    <Link className='nav-link' to="/assets">
                         <FontAwesomeIcon icon={faScrewdriverWrench} className="me-2" />
                         Assets
-                    </Nav.Link>
+                    </Link>
                 </Nav.Item>
-                <Nav.Item>
-                    <Nav.Link href="/work-orders">
+                <Nav.Item className={location.pathname === "/work-orders" ? "active" : ""}>
+                    <Link className='nav-link' to="/work-orders">
                         <FontAwesomeIcon icon={faListCheck} className="me-2" />
                         Work Orders
-                    </Nav.Link>
+                    </Link>
                 </Nav.Item>
             </Nav>
         </div>
