@@ -19,15 +19,15 @@ function Table({ assets }) {
                 <tbody>
                     {assets.length > 0 ? (
                         assets.map((asset) => (
-                            <tr key={asset.id}>
-                                <th scope="row">{asset.id}</th>
-                                <td>{asset.reference}</td>
+                            <tr key={asset.id_assets}>
+                                <th scope="row">{asset.id_assets}</th>
+                                <td>{asset.name}</td>
                                 <td>{asset.location}</td>
                                 <td>{asset.category}</td>
-                                <td>{asset.installationDate}</td>
-                                <td>{asset.maintenanceFrequency}</td>
-                                <td>{asset.technicalSpecsId}</td>
-                                <td>{asset.subCategoryId}</td>
+                                <td>{asset.installation_date}</td>
+                                <td>{asset.maintenance_frequency_inDays}</td>
+                                <td>{asset.technicalSpecifications.id_technical_specifications}</td>
+                                <td>{asset.subCategory.id_sub}</td>
                             </tr>
                         ))
                     ) : (

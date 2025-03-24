@@ -1,29 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Form from "../../components/form/Form";
 import Table from "../../components/table/Table";
+import { getAssetsData } from "../../api/assetApi";
 import "./asset.css";
 
 function Asset() {
     const navigate = useNavigate();
-    const [showForm, setShowForm] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
-    const [assets, setAssets] = useState([
-        { id: 1, reference: "P1-Beg", location: "Beggara", category: "Pompe", installationDate: "2015", maintenanceFrequency: 120, technicalSpecsId: 1, subCategoryId: 1 },
-        { id: 2, reference: "P2-Beg", location: "Beggara", category: "Pompe", installationDate: "2015", maintenanceFrequency: 120, technicalSpecsId: 2, subCategoryId: 1 },
-        { id: 3, reference: "P3-Beg", location: "Beggara", category: "Pompe", installationDate: "2015", maintenanceFrequency: 120, technicalSpecsId: 3, subCategoryId: 1 }
-    ]);
-
-    // Function to add a new asset
-    const addAsset = (newAsset) => {
-        setAssets([...assets, newAsset]);  // Update state of assets
-        setShowForm(false); // Close modal after adding
-    };
+    const [assets, setAssets] = useState([]);
 
     // Filter assets based on search query
     const filteredAssets = assets.filter(asset =>
-        asset.reference.toLowerCase().includes(searchQuery.toLowerCase())
+        asset.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
+    useEffect(() => {
+        const fetchAssets = async () => {
+            const data = await getAssetsData();
+            setAssets(data.slice(0, 10))
+        }
+
+        fetchAssets()
+    }, [])
+
 
     return (
         <div className="px-4">
@@ -46,8 +45,6 @@ function Asset() {
             {/* Table Component */}
             <Table assets={filteredAssets} />
 
-            {/* Modal Form */}
-            <Form show={showForm} onHide={() => setShowForm(false)} onAdd={addAsset} />
         </div>
     );
 }
