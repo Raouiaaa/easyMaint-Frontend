@@ -9,45 +9,7 @@ function TechnicalSpecificationsForm({ setSteps, asset, setAsset }) {
 
     const handleSubmit = async () => {
         try {
-            await createAsset({ asset, "equipmentReference": "P1", });
-
-            // {
-            //     "name": "A-01 Test",
-            //     "location": "Hostal",
-            //     "category": "Pompe",
-            //     "installationDate": "2018",
-            //     "fkSubCategoryID": "3",
-            //     "maintenanceFrequencyInDays": "3",
-            //     "manufacturer": "Flygt",
-            //     "ratedVoltage": "320V",
-            //     "ratedCurrent": "140A",
-            //     "ratedPower": "100KW",
-            //     "frequency": "70HZ",
-            //     "speed": "2980",
-            //     "insulationClass": "F",
-            //     "ingressProtection": "IP68",
-            //     "operatingTemperatureRange": "-15°C to 40°C"
-            // }
-
-            // const test = {
-            //     "name": "pump",
-            //     "location": "Manar",
-            //     "category": "centri",
-            //     "installationDate": 2017,
-            //     "maintenanceFrequencyInDays": 30,
-            //     "fkSubCategoryID": 1,
-            //     "equipmentReference": "P1",
-            //     "manufacturer": "siemens",
-            //     "ratedVoltage": "400V",
-            //     "ratedCurrent": "20A",
-            //     "ratedPower": "500",
-            //     "frequency": "50hz",
-            //     "speed": "1500trmin",
-            //     "insulationClass": "F",
-            //     "ingressProtection": "IP68",
-            //     "operatingTemperatureRange": "30C°"
-            // }
-
+            await createAsset({ ...asset, "equipmentReference": asset?.name });
 
             setSuccessMessage("Asset created successfully!");
         } catch {

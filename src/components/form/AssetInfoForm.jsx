@@ -46,7 +46,7 @@ function AssetInfoForm({ setSteps, asset, setAsset }) {
                 <Col md={6}>
                     <Form.Group controlId="subCategory">
                         <Form.Label>SubCategory</Form.Label>
-                        <Form.Select value={asset?.fkSubCategoryID} onChange={(e) => setAsset({ ...asset, fkSubCategoryID: e.target.value })}>
+                        <Form.Select value={asset?.fkSubCategoryID} onChange={(e) => setAsset({ ...asset, fkSubCategoryID: Number(e.target.value) })}>
                             <option value={null}></option>
                             <option value="1">Centrifuge</option>
                             <option value="2">Submersible</option>
@@ -59,7 +59,7 @@ function AssetInfoForm({ setSteps, asset, setAsset }) {
                 <Col md={6}>
                     <Form.Group controlId="installation_date">
                         <Form.Label>Installation date</Form.Label>
-                        <Form.Select value={asset?.installationDate} onChange={(e) => setAsset({ ...asset, installationDate: e.target.value })}>
+                        <Form.Select value={asset?.installationDate} onChange={(e) => setAsset({ ...asset, installationDate: Number(e.target.value) })}>
                             <option value={null}></option>
                             {yearsList.map((year) => (
                                 <option key={year} value={year}>{year}</option>
@@ -70,7 +70,7 @@ function AssetInfoForm({ setSteps, asset, setAsset }) {
                 <Col md={6}>
                     <Form.Group controlId="maintenance_frequency_inDays">
                         <Form.Label>Maintenance frequency</Form.Label>
-                        <Form.Control value={asset?.maintenanceFrequencyInDays} type="number" onChange={(e) => setAsset({ ...asset, maintenanceFrequencyInDays: e.target.value })} />
+                        <Form.Control value={asset?.maintenanceFrequencyInDays} type="number" onChange={(e) => setAsset({ ...asset, maintenanceFrequencyInDays: Number(e.target.value) })} />
                     </Form.Group>
                 </Col>
             </Row>
