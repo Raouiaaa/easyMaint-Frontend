@@ -15,10 +15,10 @@ function GlobalView() {
                     getAllWorkOrders(),
                     getOverdueWorkOrders()
                 ]);
-
+                
                 // Ensure data is not null before updating state
-                if (workOrdersData) setWorkOrders(workOrdersData.workOrders);
-                if (overdueWorkOrdersData) setOverdueWorkOrders(overdueWorkOrdersData.overdueWorkOrders);
+                if (workOrdersData) setWorkOrders(workOrdersData);
+                if (overdueWorkOrdersData) setOverdueWorkOrders(overdueWorkOrdersData);
             } catch (err) {
                 console.error("Error fetching work orders:", err);
                 // setError("Failed to fetch work orders."); // Set error message

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Table from "../../components/table/Table";
+import TableInfo from "../../components/table/Table";
 import { getAssetsData } from "../../api/assetApi";
 import "./asset.css";
 
@@ -13,11 +13,13 @@ function Asset() {
     const filteredAssets = assets.filter(asset =>
         asset.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
+    console.log(filteredAssets);
 
     useEffect(() => {
         const fetchAssets = async () => {
             const data = await getAssetsData();
-            setAssets(data.slice(0, 10))
+            // setAssets(data.slice(0, 10))
+            setAssets(data);
         }
 
         fetchAssets()
@@ -43,7 +45,12 @@ function Asset() {
             </div>
 
             {/* Table Component */}
-            <Table assets={filteredAssets} />
+            <TableInfo 
+                titles={["ID", "Reference", "Location", "Category", "SubCategory", "Installation Date", "Maintenance Frequency inDays", "Technical Specifications ID"]}
+                data={filteredAssets} 
+                showActionsButtons={true} 
+                type="assets"
+            />
 
         </div>
     );

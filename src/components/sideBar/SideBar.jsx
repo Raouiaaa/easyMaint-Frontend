@@ -6,6 +6,7 @@ import {
     faGauge,
     faScrewdriverWrench,
     faListCheck,
+    faComment,
 } from "@fortawesome/free-solid-svg-icons";
 import SubMenu from "./SubMenu";
 import './sideBar.css'
@@ -52,6 +53,12 @@ function SideBar() {
                     <Link className='nav-link' to="/work-orders">
                         <FontAwesomeIcon icon={faListCheck} className="me-2" />
                         Work Orders
+                    </Link>
+                </Nav.Item>
+                <Nav.Item className={location.pathname === "/notifications" ? "active" : ""}>
+                    <Link className='nav-link' to="/notifications">
+                        <FontAwesomeIcon icon={faComment} className="me-2" />
+                        Notifications
                     </Link>
                 </Nav.Item>
             </Nav>

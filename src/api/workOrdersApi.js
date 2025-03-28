@@ -11,6 +11,10 @@ export const getAllWorkOrders = async () => {
     }
 };
 
+export const createWorkOrder = async (data) => {
+    return await apiClient.post("/api/workorders", data);
+};
+
 export const getOverdueWorkOrders = async () => {
     try {
         const response = await apiClient.get("/api/workorders/overdue-workorders");
@@ -21,3 +25,4 @@ export const getOverdueWorkOrders = async () => {
         return [];
     }
 };
+

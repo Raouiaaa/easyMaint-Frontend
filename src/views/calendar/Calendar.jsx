@@ -14,7 +14,7 @@ function Calendar() {
       try {
         // Fetch both API calls in parallel
         const data = await getAllScheduledActions();
-        setScheduledActions(data.scheduledActions);
+        setScheduledActions(data);
         // if (data) setScheduledActions(data);
       } catch (err) {
         console.error("Error fetching work orders:", err);

@@ -5,14 +5,19 @@ import GlobalView from "./views/globalView/GlobalView";
 import Calendar from "./views/calendar/Calendar";
 import Asset from "./views/asset/Asset.jsx";
 import CreateAsset from "./views/asset/CreateAsset.jsx";
+import WorkOrder from "./views/workOrder/WorkOrder.jsx";
+import Notification from "./views/notification/Notification.jsx";
+import { NotificationProvider } from "./views/notification/NotificationProvider";
 import "./App.css";
 
 function App() {
 
   return (
     <BrowserRouter>
-      <div className="app-container">
-        <SideBar />
+    <div className="app-container">
+      <SideBar />
+      <NotificationProvider>
+        {/* Wrap Header and WorkOrder inside NotificationProvider */}
         <div className="body header-and-card">
           <Header />
           <Routes>
@@ -20,10 +25,13 @@ function App() {
             <Route path="/dashboard/calendar" element={<Calendar />} />
             <Route path="/assets" element={<Asset />} />
             <Route path="/assets/create" element={<CreateAsset />} />
+            <Route path="/work-orders" element={<WorkOrder />} />
+            <Route path="/notifications" element={<Notification />} />
           </Routes>
         </div>
-      </div>
-    </BrowserRouter>
+      </NotificationProvider>
+    </div>
+  </BrowserRouter>
   )
 }
 

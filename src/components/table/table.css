@@ -1,0 +1,29 @@
+.table-container {
+    width: 965px; /* Fixed width for the table */
+    max-height: 500px; /* Maximum height before scrolling */
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+  
+.table-wrapper {
+    max-height: 400px; /* Set height for vertical scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    position: relative;
+}
+  
+.custom-table {
+    width: 100%;
+    table-layout: auto;
+    white-space: nowrap; /* Prevent text from wrapping */
+    border-collapse: collapse;
+}
+  
+  /* Fix the header row */
+.custom-table thead {
+    position: sticky;
+    top: 0;
+    background-color: #343a40; /* Dark background for contrast */
+
+}
+  
