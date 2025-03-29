@@ -8,6 +8,7 @@ function Asset() {
     const navigate = useNavigate();
     const [searchQuery, setSearchQuery] = useState("");
     const [assets, setAssets] = useState([]);
+    // const {setSelectedAsset} = useAppContextProvider();
 
     // Filter assets based on search query
     const filteredAssets = assets.filter(asset =>
@@ -25,6 +26,12 @@ function Asset() {
         fetchAssets()
     }, [])
 
+    const handleAssetSelection = (row) => {
+        console.log('I m on the Asset Component')
+        console.log('ROW-> ', row)
+        // setSelectedAsset(row)
+        // navigate ('/assets/update')
+    }
 
     return (
         <div className="px-4">
@@ -45,10 +52,11 @@ function Asset() {
             </div>
 
             {/* Table Component */}
-            <TableInfo 
+            <TableInfo
                 titles={["ID", "Reference", "Location", "Category", "SubCategory", "Installation Date", "Maintenance Frequency inDays", "Technical Specifications ID"]}
-                data={filteredAssets} 
-                showActionsButtons={true} 
+                data={filteredAssets}
+                showActionsButtons={true}
+                onUpdate={handleAssetSelection}
                 type="assets"
             />
 
