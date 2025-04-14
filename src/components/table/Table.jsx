@@ -1,9 +1,11 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
 import dayjs from "dayjs";
-import './Table.css'; // Commiting a changeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee .
+import { useNavigate } from "react-router-dom";
+import './Table.css';
 
-function TableInfo({ titles, data, showActionsButtons, type, onUpdate }) {
+function TableInfo({ titles, data, showActionsButtons, type, onUpdate, navigationLink, deleteAction}) {
+  const navigate = useNavigate();
 
   const formatDate = (dateString) => {
     return dateString ? dayjs(dateString).format("MMMM D, YYYY h:mm A") : null;
@@ -20,6 +22,8 @@ function TableInfo({ titles, data, showActionsButtons, type, onUpdate }) {
       "Installation Date": "installation_date",
       "Maintenance Frequency inDays": "maintenance_frequency_inDays",
       "Technical Specifications ID": (row) => row.technicalSpecifications?.id_technical_specifications || "N/A",
+      "Creation date": (row) => formatDate(row.created_at),
+      "Update date": (row) => formatDate(row.updated_at),
     },
     workOrders: {
       "ID": "id_work_order",
@@ -29,6 +33,7 @@ function TableInfo({ titles, data, showActionsButtons, type, onUpdate }) {
       "Start date": (row) => formatDate(row.start_date),
       "End date": (row) => formatDate(row.end_date),
       "Creation date": (row) => formatDate(row.created_at),
+      "Update date": (row) => formatDate(row.updated_at),
     },
     notifications: {
       "ID": "id_notifications",
@@ -62,8 +67,18 @@ function TableInfo({ titles, data, showActionsButtons, type, onUpdate }) {
               <tr key={rowIndex}>
                 {showActionsButtons && (
                   <td>
-                    <button onClick={() => onUpdate(row)} type="button" className="btn btn-success me-2"><i className="fas fa-edit"></i></button>
-                    <button type="button" className="btn btn-danger"><i className="far fa-trash-alt"></i></button>
+                    <button onClick={() => { 
+                        onUpdate(row); 
+                        navigate(navigationLink); 
+                      }}  
+                      type="button" 
+                      className="btn btn-success me-2"><i className="fas fa-edit"></i>
+                    </button>
+                    <button 
+                      onClick={() => deleteAction(row)}
+                      type="button" 
+                      className="btn btn-danger"><i className="far fa-trash-alt"></i>
+                    </button>
                   </td>
                 )}
                 {titles.map((title, colIndex) => {

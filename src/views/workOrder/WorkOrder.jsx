@@ -44,7 +44,7 @@ function WorkOrder() {
 
             {/* Table Component */}
             <TableInfo 
-                titles={["ID", "Asset", "Assigned to", "Status", "Start date", "End date", "Creation date"]}
+                titles={["ID", "Asset", "Assigned to", "Status", "Start date", "End date", "Creation date", "Update date"]}
                 data={filteredWorkOrders} 
                 showActionsButtons={true} 
                 type="workOrders"

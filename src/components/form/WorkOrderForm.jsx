@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Form, Row, Col, Button, Modal } from 'react-bootstrap';
 import { useToast } from '../toast/ToastProvider';
 import { createWorkOrder } from '../../api/workOrdersApi';
-import { useNotifications } from "../../views/notification/NotificationProvider" // Import Notifications
+import { useAppContext } from "../../globalContextProvider/GlobalContextProvider" // Import Notifications
 
 function WorkOrderForm({ show, onHide }) {
     const { setSuccessMessage, setErrorMessage } = useToast();
-    const { addNotification } = useNotifications(); // Use Notifications
+    const { addNotification } = useAppContext(); // Use Notifications
 
     const [workOrder, setWorkOrder] = useState({
         idAsset: "",

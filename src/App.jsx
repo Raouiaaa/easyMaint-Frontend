@@ -8,7 +8,7 @@ import CreateAsset from "./views/asset/CreateAsset.jsx";
 import UpdateAsset from "./views/asset/UpdateAsset.jsx";
 import WorkOrder from "./views/workOrder/WorkOrder.jsx";
 import Notification from "./views/notification/Notification.jsx";
-import { NotificationProvider } from "./views/notification/NotificationProvider";
+import { GlobalProvider } from "./globalContextProvider/GlobalContextProvider.jsx";
 import "./App.css";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
     <BrowserRouter>
       <div className="app-container">
         <SideBar />
-        <NotificationProvider>
+        <GlobalProvider>
           {/* Wrap Header and WorkOrder inside NotificationProvider */}
           <div className="body header-and-card">
             <Header />
@@ -31,7 +31,7 @@ function App() {
               <Route path="/notifications" element={<Notification />} />
             </Routes>
           </div>
-        </NotificationProvider>
+        </GlobalProvider>
       </div>
     </BrowserRouter>
   )

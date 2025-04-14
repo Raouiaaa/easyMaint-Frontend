@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
 import { Navbar, Nav, Modal, Alert } from "react-bootstrap";
-import { useNotifications } from "../../views/notification/NotificationProvider";
+import { useAppContext } from "../../globalContextProvider/GlobalContextProvider";
 
 import "./header.css";
 
 function Header() {
-    const { notifications, unreadCount, clearNotifications } = useNotifications();
+    const { notifications, unreadCount, clearNotifications } = useAppContext();
     const [showNotifications, setShowNotifications] = useState(false);
 
     const handleClick = () => {
